@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+// components
+import Contacts from './components/Contacts';
+import Header from './components/Header.js';
+
+// importing bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+// css
 import './App.css';
 
 function App() {
+  // all components to be rendered on DOM goes here
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {/* header component */}
+      <Header brandName='ContactMan'></Header>
+      <div className='container'>
+        {/* contacts component */}
+        <Contacts></Contacts>
+      </div>
     </div>
   );
 }
