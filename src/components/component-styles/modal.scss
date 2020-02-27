@@ -1,0 +1,151 @@
+// mixins
+@mixin flex($content: center, $item: center, $direction: row, $wrap: wrap) {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: $content;
+  justify-content: $content;
+  -webkit-box-align: $item;
+  align-items: $item;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+// variables
+$tertiary-color: #ffffff;
+$secondary-color: #424242;
+$chat-color: #4a4a4a;
+$card-color: #9b9b9b;
+$card-btn-color: #313131;
+// modal styles
+.my-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  overflow: hidden;
+  height: unset;
+  transform-origin: bottom;
+  z-index: 1000000000;
+  &.reverse {
+    transform-origin: top;
+  }
+  .modal-position {
+    @include flex;
+    height: 100%;
+  }
+
+  .modal-content-type-2 {
+    position: relative;
+    background-color: $tertiary-color;
+    max-width: 320px;
+    width: 85%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px 20px 20px;
+    color: $secondary-color;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    border-radius: 4px;
+    transform-origin: center;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    transform: scale(0);
+    transition: transform 250ms ease-out;
+    &.card-in {
+      transform: scale(1);
+      transition: transform 250ms ease-in 300ms;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      font-size: 35px;
+      font-family: inherit;
+      font-weight: 300;
+      color: #9b9b9b;
+      opacity: 0.7;
+      right: 15px;
+      cursor: pointer;
+    }
+    .modal-head {
+      font-size: 18px;
+      color: $chat-color;
+      margin-bottom: 23px;
+
+      .head-text {
+        font-weight: bold;
+      }
+    }
+
+    .delete-message {
+      color: $card-color;
+      font-family: inherit;
+      line-height: 20px;
+      margin-bottom: 65px;
+    }
+    .modal-delete-btn {
+      width: 100%;
+      padding: 10px 0;
+      display: inline-block;
+      white-space: nowrap;
+      text-align: center;
+      color: $tertiary-color;
+      background-color: red;
+      font-weight: bold;
+      border: 0;
+      cursor: pointer;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+    }
+  }
+}
+
+// modal animations
+
+@keyframes modal-in {
+  0% {
+    transform: perspective(12cm) scaleY(0);
+  }
+  100% {
+    transform: perspective(12cm) scaleY(100%);
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(100%);
+  }
+}
+
+@keyframes card-out {
+  from {
+    opacity: 1;
+    transform: scale(100%);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0%);
+  }
+}
+
+@keyframes modal-out {
+  from {
+    transform: perspective(12cm) scaleY(100%);
+  }
+  to {
+    transform: perspective(12cm) scaleY(0);
+  }
+}
