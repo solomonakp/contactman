@@ -47,7 +47,7 @@ export default class Provider extends Component {
     contacts: [
       {
         id: 0,
-        name: 'Chokor solomon',
+        name: 'Chokor Solomon ',
         phone: '07036583505',
         email: 'solomonakp@gmail.com'
       },
@@ -71,7 +71,7 @@ export default class Provider extends Component {
       },
       {
         id: 4,
-        name: 'Dadson rugba',
+        name: 'Dadson rugba ',
         phone: '07033725361',
         email: 'rugbee2die4k@gmail.com'
       }
