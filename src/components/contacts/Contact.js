@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // class used for typechecking
 import PropTypes from 'prop-types';
 // consumer
-import { Consumer } from '../context';
+import { Consumer } from '../../context';
 
 // importing rmwc list component
 import { ListItem, ListItemGraphic } from '@rmwc/list';
@@ -11,7 +11,7 @@ import { Avatar } from '@rmwc/avatar';
 // material list styles
 import '@material/list/dist/mdc.list.css';
 // component styles
-import './component-styles/contact.scss';
+import '../component-styles/contact.scss';
 
 /*
  extending contact from component which 

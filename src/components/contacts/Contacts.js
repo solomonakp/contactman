@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 // imp consumer
-import { Consumer } from '../context';
+import { Consumer } from '../../context';
 // components
 //  rmwc list
 import { List, ListGroup } from '@rmwc/list';
 // contact
 import Contact from './Contact';
 // modL
-import Modal from './Modal';
+import Modal from '../layout/Modal';
 
 class Contacts extends Component {
   render() {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 // consumer
-import { Consumer } from '../context';
+import { Consumer } from '../../context';
 
 // importing sass
-import './component-styles/modal.scss';
+import '../component-styles/modal.scss';
 
 class Modal extends Component {
   constructor(props) {
