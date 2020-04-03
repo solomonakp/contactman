@@ -1,18 +1,44 @@
-import React, { Component } from 'react';
+// mini note on modal animation
+// display block should be added via classes not through javascript
 
-// consumer
-import { Consumer } from '../../context';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // importing sass
 import '../component-styles/modal.scss';
 
+const toggler = (state, key) => {
+  return {
+    state,
+    key: !state[key]
+  };
+};
 class Modal extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      toggler: key => {
+        // sets current context api state depending on action
+        return this.setState(state => {
+          // console.log(reducer(state, action));
+          return toggler(state, key);
+        });
+      }
+    };
+    this.modal = React.createRef();
   }
-  static openModal() {
-    const modal = document.querySelector('.my-modal');
+
+  componentDidUpdate() {
+    const modal = this.modal.current;
+    if (this.props.toggle === true) {
+      this.modalOpen(modal);
+    } else if (this.props.toggle === false) {
+      this.modalClose(modal);
+    }
+    console.log(this.props);
+  }
+  modalOpen = modal => {
+    // const modal = document.querySelector('.my-modal');
     const animate = new Promise(resolve => {
       // getting modal card
       const modalCard = modal.firstElementChild.firstElementChild;
@@ -20,6 +46,7 @@ class Modal extends Component {
       modal.style.display = 'block';
       // animating modal
       modal.style.animation = 'modal-in 250ms forwards';
+      console.log(modalCard);
       // returning modal card as resolve
       resolve(modalCard);
     });
@@ -27,11 +54,11 @@ class Modal extends Component {
       // transition card in
       modalCard.classList.add('card-in');
     });
-  }
+  };
 
   // modal close func
-  static modalClose = () => {
-    const modal = document.querySelector('.my-modal');
+  modalClose = modal => {
+    // const modal = document.querySelector('.my-modal');
     // animation promise
     const animate = new Promise(resolve => {
       // getting modal card
@@ -57,64 +84,19 @@ class Modal extends Component {
           modal.classList.remove('reverse');
         }, 600);
       });
-    // dispatch({ type: 'show-modal' });
-  };
-  hideDetails = (modalClose, dispatch, e) => {
-    if (
-      e.target.classList.contains('modal-position') ||
-      e.target.classList.contains('modal-close')
-    ) {
-      // closing modal
-      modalClose();
-      // toggling showModal state
-      dispatch({ type: 'show-modal' });
-    }
   };
 
   render() {
     return (
-      <Consumer>
-        {value => {
-          const { showModal, currentTarget, dispatch } = value;
-
-          return (
-            <React.Fragment>
-              <div
-                className='my-modal'
-                // binding arguments dispatch and modalClose func to func
-                onClick={this.hideDetails.bind(
-                  this,
-                  Modal.modalClose,
-                  dispatch
-                )}
-              >
-                <div className='modal-position'>
-                  <div className='modal-content-type-2'>
-                    <span className='close-btn modal-close'>×</span>
-                    {/* this portion runs only if state is true */}
-                    {showModal ? (
-                      <React.Fragment>
-                        {Modal.openModal()}
-                        <div className='modal-head '>
-                          <span className='head-text'>
-                            {currentTarget.name}
-                          </span>
-                        </div>
-                        <button className='modal-delete-btn'>
-                          Delete Post
-                        </button>
-                      </React.Fragment>
-                    ) : null}
-                    {/* dynamic portion end  */}
-                  </div>
-                </div>
-              </div>
-            </React.Fragment>
-          );
-        }}
-      </Consumer>
+      <div className='my-modal' ref={this.modal} onClick={this.props.close}>
+        {this.props.children(this.state)}
+      </div>
     );
   }
 }
+
+Modal.propTypes = {
+  children: PropTypes.func.isRequired
+};
 
 export default Modal;

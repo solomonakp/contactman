@@ -25,15 +25,15 @@ const reducer = (state, action) => {
         // array of state
         ...state,
         // array of contact object
-        currentTarget: target
+        currentContact: target
       };
-    case 'show-modal':
+    case 'toggle':
       // returns an object  of:
       return {
         // array of state
         ...state,
         // array of contact object
-        showModal: !state.showModal
+        [action.payload]: !state[action.payload]
       };
 
     default:
@@ -76,13 +76,14 @@ export default class Provider extends Component {
         email: 'rugbee2die4k@gmail.com'
       }
     ],
-    showModal: false,
-    currentTarget: null,
+    openContact: false,
+    currentContact: null,
+    showMore: true,
 
     dispatch: action => {
       // sets current context api state depending on action
       return this.setState(state => {
-        console.log(reducer(state, action));
+        // console.log(reducer(state, action));
         return reducer(state, action);
       });
     }

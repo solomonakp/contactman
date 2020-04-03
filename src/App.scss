@@ -1,7 +1,7 @@
-.App {
-  background-color: #ffffff;
-  min-height: 100vh;
-}
+// .App {
+//   background-color: #ffffff;
+//   min-height: 100vh;
+// }
 
 .App-header {
   min-height: 100vh;
@@ -21,3 +21,46 @@
 .App-link {
   color: #61dafb;
 }
+
+.main {
+  min-height: 100vh;
+}
+
+.form {
+  background-color: black;
+  min-height: 100vh;
+}
+
+.page {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/* Page Transition style start */
+.slide-appear,
+.slide-enter {
+  // transform: scaleY(0);
+  opacity: 0;
+}
+
+.slide-appear-active,
+.slide-enter.slide-enter-active {
+  // transform: scaleY(1);
+  // transform-origin: bottom;
+  opacity: 1;
+  transition: opacity 300ms linear 150ms;
+}
+
+.slide-exit {
+  opacity: 1;
+}
+
+.slide-exit.slide-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
+}
+
+/* Page Transition style end */

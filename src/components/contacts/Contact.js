@@ -26,7 +26,7 @@ class Contact extends Component {
     // sets current item context state
     dispatch({ type: 'set-item', payload: id });
     // toggling showModal state
-    dispatch({ type: 'show-modal' });
+    dispatch({ type: 'toggle', payload: 'openContact' });
   };
   render() {
     const { id, name } = this.props.contact;

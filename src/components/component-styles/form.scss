@@ -1,0 +1,58 @@
+/* phone input styles start */
+.react-tel-input {
+  .flag-down {
+    margin-top: unset;
+    transform: translateY(-50%);
+  }
+  .form-control {
+    border: 0;
+    display: inline-flex;
+    height: 56px;
+    padding: unset;
+    font-size: unset;
+    border-radius: 4px 4px 0 0;
+    width: calc(100% - 55px);
+    margin-left: 55px;
+    input {
+      padding-top: unset;
+      padding-bottom: unset;
+    }
+  }
+
+  div.selected-flag {
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .arrow {
+      margin-top: unset;
+      transform: translateY(-50%);
+      //   border-left: 6px solid transparent;
+      //   border-right: 6px solid transparent;
+      //   border-top: 7px solid rgba(68, 68, 68, 0.4);
+    }
+  }
+}
+/* phone input styles end */
+
+/* country region styles start */
+.MuiInput-root-8 {
+  width: 100%;
+  height: 56px;
+}
+
+div.MuiSelect-select-2 {
+  &:focus {
+    background-color: #ffffff;
+  }
+}
+
+div.MuiInput-underline-12:hover:not(.MuiInput-disabled-11):not(.MuiInput-focused-10):not(.MuiInput-error-13):before {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.87);
+}
+
+div.MuiInput-underline-12::after {
+  border-bottom: 2px solid #6200ee;
+}
+
+/* country region styles end */
